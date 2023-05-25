@@ -1,0 +1,28 @@
+name: yns-learn-github-actions
+run-name: YNS is learning GitHub Actions
+on: [push, repository_dispatch]
+
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run: echo This is single line script.
+      - run: |
+          echo This is a multiline script.
+          cat README.md
+      - name: Step with a name
+        run: echo This is running on an ubuntu VM!!!
+
+  second-job:
+    runs-on: windows-latest
+    steps:
+      - run: echo This is running on a windows VM!!!
+
+  third-job:
+    runs-on: macos-latest
+    steps:
+      - run: echo This is running on a macOS VM!!!
